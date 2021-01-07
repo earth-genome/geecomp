@@ -27,7 +27,13 @@ ee.Activate()
 
 1. Check out this repository
 2. (optional) Create a virtual Python environment
-3. Install the package `pip install .`
+3. Install the package 
+
+```
+cd geecomp
+mkvirtualenv geecomp
+pip install .
+```
 
 ## Usage
 
@@ -42,41 +48,41 @@ geecomp --help
 ## Arguments
 
 positional arguments:
-  aoi_file              AOI file (a valid GeoJSON or a shapefile)
-  tif_name              name of GeoTIFF to export
+*  aoi_file              AOI file (a valid GeoJSON or a shapefile)
+*  tif_name              name of GeoTIFF to export
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --collection COLLECTION
+*  -h, --help            show this help message and exit
+*  --collection COLLECTION
                         Sentinel-2 GEE Collection ID (default: COPERNICUS/S2)
-  --start_date START_DATE
+*  --start_date START_DATE
                         Start datetime (default: 2020-01-01)
-  --end_date END_DATE   End datetime (default: 2021-01-01)
-  --cloudy_pixel_percentage CLOUDY_PIXEL_PERCENTAGE
+*  --end_date END_DATE   End datetime (default: 2021-01-01)
+*  --cloudy_pixel_percentage CLOUDY_PIXEL_PERCENTAGE
                         cloudy pixel percentage metadata to filter scenes by (0-100) (default: 60)
-  --bands BANDS [BANDS ...]
+*  --bands BANDS [BANDS ...]
                         Bands to export (default: ['B4', 'B3', 'B2'])
-  --s2cloudless         apply s2cloudless cloud mask (default: False)
-  --cloud_thresh CLOUD_THRESH
+*  --s2cloudless         apply s2cloudless cloud mask (default: False)
+*  --cloud_thresh CLOUD_THRESH
                         s2cloudless cloud probability threshold (0-100) (default: 50)
-  --cloud_proj_dist CLOUD_PROJ_DIST
+*  --cloud_proj_dist CLOUD_PROJ_DIST
                         Scaled cloud projection distance (default: 1)
-  --cloud_buf CLOUD_BUF
+*  --cloud_buf CLOUD_BUF
                         Amount to dilate cloud pixels in meters (default: 50)
-  --composite {mean,median,max,minmosaic,quality,percentile}
+*  --composite {mean,median,max,minmosaic,quality,percentile}
                         Select composite operation (default: mean)
-  --quality_bands QUALITY_BANDS [QUALITY_BANDS ...]
+*  --quality_bands QUALITY_BANDS [QUALITY_BANDS ...]
                         Band(s) to compute quality composite over (default: ['B8', 'B4'])
-  --quality_pct QUALITY_PCT
+*  --quality_pct QUALITY_PCT
                         Percentile (0-100) for quality composite (default: 100)
-  --pct PCT             Percentile (0-100) for percentile composite (default: 25)
-  --crs CRS             CRS to export file (default: EPSG:3857)
-  --resolution RESOLUTION
+*  --pct PCT             Percentile (0-100) for percentile composite (default: 25)
+*  --crs CRS             CRS to export file (default: EPSG:3857)
+*  --resolution RESOLUTION
                         Resolution to export GeoTIFF in meters (default: 10.0)
-  --data_type {raw,byte,float}
+*  --data_type {raw,byte,float}
                         Data type to export GeoTIFF (default: raw)
-  --scale_min SCALE_MIN
+*  --scale_min SCALE_MIN
                         Minimum value for scaling (raw) (default: 0)
-  --scale_max SCALE_MAX
+*  --scale_max SCALE_MAX
                         Maximum value for scaling (raw) (default: 3000)
 
