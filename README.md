@@ -17,9 +17,11 @@ Other datasets are currently not supported, but will be added in the future.
 This tool depends on the google earth engine client API and geemap.
 If freshly installing, make sure you activate your account:
 
-`python`
-`import ee`
-`ee.Activate()`
+```
+python
+import ee
+ee.Activate()
+```
 
 ## Installation
 
@@ -33,7 +35,9 @@ You can run the tool with the `--help` flag to get a sense of the options.
 Upon installation, the tool can be invoked directly at the command line.
 Upon export, the composite GeoTIFF be deposited in your Google Drive under the "GEE Composite" folder
 
-`geecomp --help`
+```
+geecomp --help
+```
 
 ## Arguments
 
