@@ -44,7 +44,8 @@ def run(args):
                      args.resolution,
                      args.data_type,
                      args.scale_min,
-                     args.scale_max)
+                     args.scale_max,
+                     args.local_dir)
 
 
 def main():
@@ -135,6 +136,9 @@ def main():
     parser.add_argument('--scale_max', type=float,
                         help='Maximum value for scaling (raw)',
                         default=3000)
+    parser.add_argument('--local_dir', type=str,
+                        help='Local directory to save to, instead of GDrive',
+                        default=None)
 
     args = parser.parse_args()
     

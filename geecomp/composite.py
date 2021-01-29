@@ -3,7 +3,7 @@ composite.py
 
 Functions for making composites from image collections
 '''
-
+import os
 
 import ee
 import geemap
@@ -70,7 +70,7 @@ def compute_composite(ic, composite, bands, quality_bands, quality_pct, pct):
     return comp
 
 
-def export_composite(comp, aoi, tif_name, crs, resolution, data_type, scale_min, scale_max):
+def export_composite(comp, aoi, tif_name, crs, resolution, data_type, scale_min, scale_max, local_dir):
     if data_type == 'byte':
         comp_out = comp.float().subtract(scale_min).divide(scale_max - scale_min).multiply(255).byte()
     elif data_type == 'float':
@@ -78,9 +78,21 @@ def export_composite(comp, aoi, tif_name, crs, resolution, data_type, scale_min,
     elif data_type == 'raw':
         comp_out = comp
 
-    geemap.ee_export_image_to_drive(ee_object=comp_out,
-                                    description=tif_name,
-                                    folder='GEE Composite',
-                                    region=aoi,
-                                    scale=resolution,
-                                    crs=crs)
+    if local_dir:
+        if not os.path.exists(local_dir):
+            os.mkdir(local_dir)
+        geemap.ee_export_image(
+            comp_out,
+            filename=os.path.join(local_dir, f'{tif_name}.tif'),
+            region=aoi, scale=resolution, crs=crs, file_per_band=False)
+
+    else:
+        geemap.ee_export_image_to_drive(ee_object=comp_out,
+                                        description=tif_name,
+                                        folder='GEE Composite',
+                                        region=aoi,
+                                        scale=resolution,
+                                        crs=crs)
+
+
+

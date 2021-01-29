@@ -12,7 +12,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'geecomp = geecomp.run:main'
+            'geecomp = geecomp.run:main',
+            'geecomp_modis = geecomp.modis:main'
         ]
     }
 )
